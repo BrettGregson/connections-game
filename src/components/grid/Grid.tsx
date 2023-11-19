@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import GridItem from "../grid-item/GridItem";
 import Button from "../button/Button";
+import Life from "../life/Life";
 import { Words, Word } from "../../types";
 
 const MAX_WORDS = 4;
-
+let lives = 4;
 let selectedWords: Word[] = [];
 
 const initialWords: Words = [
@@ -92,6 +93,7 @@ const initialWords: Words = [
 
 const Grid = () => {
   const [words, setWords] = useState(initialWords);
+  const [gridItemKey, setGridItemKey] = useState(0);
 
   // Shuffles the words array
   const shuffleWords = () => {
@@ -124,11 +126,14 @@ const Grid = () => {
   };
 
   const deselectWords = () => {
-    console.log("deselectWords");
+    selectedWords = []; // Clear selected words
+    setGridItemKey((prevKey) => prevKey + 1); // Increment key to force re-render of GridItems
   };
 
   const submitWords = () => {
-    console.log("submitWords");
+    if (selectedWords.length !== MAX_WORDS) {
+      return false;
+    }
   };
 
   return (
@@ -138,10 +143,17 @@ const Grid = () => {
           <GridItem
             word={word.word}
             id={word.id}
-            key={word.id}
+            key={`${word.id}-${gridItemKey}`}
             group={word.group}
             selectGridItem={selectGridItem}
           />
+        ))}
+      </div>
+
+      <div className="lives-wrapper">
+        Mistakes remaining:
+        {Array.from({ length: lives }, (_, index) => (
+          <Life key={index} />
         ))}
       </div>
 

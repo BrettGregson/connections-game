@@ -21,9 +21,6 @@ code {
   margin-top: 5em;
 }
 
-.grid-item {
-}
-
 .grid-item-content {
   background-color: #efefe6;
   padding: 1.6em 1em;
@@ -64,3 +61,21 @@ code {
   padding: 0.5em 1em;
   cursor: pointer;
 }
+
+.lives-wrapper {
+  margin: auto;
+  text-align: center;
+  margin-top: 1em;
+}
+
+.life-indicator {
+  width: 1em;
+  height: 1em;
+  background-color: #58584b;
+  display: inline-block;
+  border-radius: 50%;
+  margin-left: 2px;
+  margin-bottom: -3px;
+}
+
+
