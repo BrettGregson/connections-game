@@ -5,7 +5,6 @@ import Life from "../life/Life";
 import { Words, Word } from "../../types";
 
 const MAX_WORDS = 4;
-let lives = 4;
 let selectedWords: Word[] = [];
 
 const initialWords: Words = [
@@ -94,6 +93,7 @@ const initialWords: Words = [
 const Grid = () => {
   const [words, setWords] = useState(initialWords);
   const [gridItemKey, setGridItemKey] = useState(0);
+  const [lives, setLives] = useState(4);
 
   // Shuffles the words array
   const shuffleWords = () => {
@@ -126,13 +126,24 @@ const Grid = () => {
   };
 
   const deselectWords = () => {
-    selectedWords = []; // Clear selected words
-    setGridItemKey((prevKey) => prevKey + 1); // Increment key to force re-render of GridItems
+    selectedWords = [];
+    setGridItemKey((prevKey) => prevKey + 1);
   };
 
   const submitWords = () => {
     if (selectedWords.length !== MAX_WORDS) {
       return false;
+    }
+
+    const firstGroup = selectedWords[0].group;
+    const isSameGroup = selectedWords.every(
+      (word) => word.group === firstGroup
+    );
+
+    if (isSameGroup) {
+      // correct();
+    } else {
+      setLives(lives - 1);
     }
   };
 
