@@ -11,3 +11,56 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 5em;
+}
+
+.grid-item {
+}
+
+.grid-item-content {
+  background-color: #efefe6;
+  padding: 1.6em 1em;
+  text-align: center;
+  text-transform: uppercase;
+  color: #222;
+  font-weight: bold;
+  border-radius: 0.2em;
+  cursor: pointer;
+  user-select: none;
+}
+
+.grid-item-content.active {
+  background-color: #5c5751;
+  color: white;
+}
+
+.button-wrapper {
+  display: flex;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 1em;
+  justify-content: center;
+  text-align: center;
+}
+
+.button-item {
+  flex: 1;
+}
+
+.button-item button {
+  border: 1px solid #222;
+  background: transparent;
+  color: #222;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 2em;
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
